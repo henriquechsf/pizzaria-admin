@@ -1,9 +1,10 @@
-import Head from 'next/head';
-import styles from '../../styles/home.module.scss';
+import Head from "next/head";
+import styles from "../../styles/home.module.scss";
 
-import logoImg from '../../public/logo.svg';
-import Image from 'next/image';
-import { Input } from '../components/ui/Input';
+import logoImg from "../../public/logo.svg";
+import Image from "next/image";
+import { Input } from "../components/ui/Input";
+import { Button } from "../components/ui/Button";
 
 export default function Home() {
   return (
@@ -13,14 +14,19 @@ export default function Home() {
       </Head>
       <div className={styles.containerCenter}>
         <Image src={logoImg} alt="Logo Pizzaria" />
-      </div>
+        <div className={styles.login}>
+          <form>
+            <Input type="text" placeholder="Digite seu e-mail" />
+            <Input type="password" placeholder="Sua senha" />
 
-      <div className={styles.login}>
-        <form>
-          <Input type="text" placeholder='Digite seu e-mail' />
-          <Input type="password" placeholder='Sua senha' />
-        </form>
+            <Button type="submit" loading={true}>
+              Acessar
+            </Button>
+          </form>
+
+          <a className={styles.text}>Nao possui uma conta? Cadastre-se</a>
+        </div>
       </div>
     </>
-  )
+  );
 }
