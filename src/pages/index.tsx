@@ -1,7 +1,14 @@
+import Head from 'next/head';
+
 export default function Home() {
   return (
-    <div>
-      <h1>Pizzaria</h1>
-    </div>
+    <>
+      <Head>
+        <title>Pizzaria - Faca seu login</title>
+      </Head>
+      <div>
+        <h1>Sujeito Pizzaria</h1>
+      </div>
+    </>
   )
 }
