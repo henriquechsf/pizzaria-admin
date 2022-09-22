@@ -3,6 +3,8 @@ import { Header } from "../../components/Header";
 import { FormEvent, useState } from "react";
 import styles from "./styles.module.scss";
 import { Input } from "../../components/ui/Input";
+import { toast } from "react-toastify";
+import { api } from "../../services/apiClient";
 
 export default function Category() {
   const [name, setName] = useState("");
@@ -10,7 +12,21 @@ export default function Category() {
   const handleRegister = async (event: FormEvent) => {
     event.preventDefault();
 
-    alert("Name: " + name);
+    if (name === "") {
+      toast.error("Digite o nome da catetoria");
+      return;
+    }
+
+    try {
+      await api.post("/category", {
+        name: name,
+      });
+
+      toast.success(`Categoria cadastrada com sucesso!`);
+      setName("");
+    } catch (err) {
+      toast.error("Erro ao cadastrar categoria!");
+    }
   };
 
   return (
