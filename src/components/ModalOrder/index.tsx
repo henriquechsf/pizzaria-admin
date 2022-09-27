@@ -5,11 +5,17 @@ import styles from "./styles.module.scss";
 
 interface ModalOrderProps {
   isOpen: boolean;
-  onClose: VoidFunction;
   order: OrderItemProps[];
+  onClose: VoidFunction;
+  onConfirm: (id: string) => void;
 }
 
-export function ModalOrder({ isOpen, onClose, order }: ModalOrderProps) {
+export function ModalOrder({
+  isOpen,
+  onClose,
+  order,
+  onConfirm,
+}: ModalOrderProps) {
   const customStyles = {
     content: {
       top: "50%",
@@ -51,7 +57,10 @@ export function ModalOrder({ isOpen, onClose, order }: ModalOrderProps) {
           </section>
         ))}
 
-        <button className={styles.buttonOrder} onClick={() => {}}>
+        <button
+          className={styles.buttonOrder}
+          onClick={() => onConfirm(order[0].order_id)}
+        >
           Concluir pedido
         </button>
       </div>
